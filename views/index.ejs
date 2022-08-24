@@ -1,0 +1,42 @@
+<%- include("./layouts/header") %>
+
+    <h1 class="text-center mt-5">All Posts</h1>
+
+    <div class="container mt-5">
+        <a href="/posting" class=" btn btn-success">New Post..</a>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5">
+            <% db.forEach(d=> { %>
+                <div class="col">
+                    <a href="/post/<%= d.judul.toLowerCase().replace(/\s+/g, '') %>"
+                        class="text-decoration-none text-dark">
+                        <div class="card h-100 position-relative">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= d.judul %>
+                                </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    <%= d.nama %>
+                                </h6>
+                                <p class="card-text">
+                                    <%= d.isi.slice(0, 150) %>...
+                                </p>
+                                <p class="card-text"><small class="text-muted">
+                                        <%= d.post_at %>
+                                    </small></p>
+                            </div>
+                            <a href="/api/post/delete/<%= d.id %>" class="position-absolute bottom-0 end-0 me-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <%- include("./layouts/footer") %>

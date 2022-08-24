@@ -1,0 +1,32 @@
+<%- include("./layouts/header") %>
+
+    <h1 class="text-center mt-5 mb-5">Post</h1>
+
+    <form action="/api/post" method="POST" class="was-validated mb-5">
+        <div class="container p-5 rounded-3 border border-dark">
+            <div class=" mb-3">
+                <label for="judul" class="form-label">Judul</label>
+                <input type="text" class="form-control" id="judul" placeholder="Judul" name="judul" required autofocus>
+                <div class="invalid-feedback">
+                    Judul Harus Di Isi.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" required>
+                <div class="invalid-feedback">
+                    Nama Harus Di Isi.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="isi" class="form-label">Isi</label>
+                <textarea class="form-control" id="isi" rows="3" name="isi" required></textarea>
+                <div class="invalid-feedback">
+                    Isi Harus Di Isi.
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success px-4 mt-4" value="Post">
+        </div>
+    </form>
+
+    <%- include("./layouts/footer") %>
